@@ -25,4 +25,6 @@ Work in progress (see to be done section below)
 
 ## Change log
 
-@see CHANGELOG.md & [keepachangelog.com](http://keepachangelog.com)
+We follow [keepachangelog.com](http://keepachangelog.com) recommandations for our [CHANGELOG]
+
+[CHANGELOG]: CHANGELOG.md
