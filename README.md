@@ -1,14 +1,12 @@
 # SwiftiumKit
 
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+
 This "Kit" adds many feature to speed up iOS app development. It is a rewrite of our internal ObjC Kit, but using Swift features, instead of runtime hacks. Unit tests (using given-when-expect format) and documentation are very important.
 
 ## Main features
 
 Work in progress (see to be done section below)
-
-## Install
-
-TODO : add Carthage or swift package manager ? instructions (@see https://github.com/skreutzberger/SwiftyBeaver)
 
 # To be done :
 
