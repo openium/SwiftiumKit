@@ -16,7 +16,7 @@ extension UIColor {
     
     color = UIColor(rgb: 0xAABBCC)
     
-    @param rgbValue an int which bytes represents red, green and blue components
+    @param rgb an int which bytes represents red, green and blue components
     @return an UIColor instance
     */
     public convenience init(rgb: Int64) {
@@ -27,6 +27,15 @@ extension UIColor {
         self.init(red: red, green: green, blue: blue, alpha: alpha)
     }
     
+    /** Method to instanciate a color from an int (0xRRGGBBAA).
+     
+     Usage example :
+     
+     color = UIColor(rgb: 0xAABBCCDD)
+     
+     @param rgba an int which bytes represents red, green blue and alpha components
+     @return an UIColor instance
+     */
     public convenience init(rgba: Int64) {
         let red   = CGFloat((0xff000000 & rgba) >> 24) / 255.0
         let green = CGFloat((0xff0000   & rgba) >> 16) / 255.0
@@ -35,6 +44,15 @@ extension UIColor {
         self.init(red: red, green: green, blue: blue, alpha: alpha)
     }
     
+    /** Method to instanciate a color from an int (0xAARRGGBB).
+     
+     Usage example :
+     
+     color = UIColor(rgb: 0xAABBCCDD)
+     
+     @param argb an int which bytes represents alpha, red, green and blue components
+     @return an UIColor instance
+     */
     public convenience init(argb: Int64) {
         let alpha = CGFloat((0xff000000 & argb) >> 24) / 255.0
         let red   = CGFloat((0xff0000   & argb) >> 16) / 255.0

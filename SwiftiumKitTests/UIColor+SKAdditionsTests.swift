@@ -63,5 +63,18 @@ class UIColor_OSKAdditionsTests: XCTestCase {
         XCTAssertEqualWithAccuracy(f[3], a22, accuracy: precision)
     }
     
-    
+    func testColorFromARGB() {
+        // Given
+        let color:Int64 = 0x16121212
+        
+        // When
+        let c = UIColor(argb: color)
+        
+        // Expect
+        let f = CGColorGetComponents(c.CGColor)
+        XCTAssertEqualWithAccuracy(f[0], r18, accuracy: precision)
+        XCTAssertEqualWithAccuracy(f[1], g18, accuracy: precision)
+        XCTAssertEqualWithAccuracy(f[2], b18, accuracy: precision)
+        XCTAssertEqualWithAccuracy(f[3], a22, accuracy: precision)
+    }
 }
