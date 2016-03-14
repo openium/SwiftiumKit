@@ -8,7 +8,12 @@ This "Kit" adds many feature to speed up iOS app development. It is a rewrite of
 
 Work in progress (see to be done section below)
 
+- UIColor extension to create colors from RRGGBB codes
+- String extension (hex, hashes)
+
 # To be done :
+
+Add CONTRIBUTING and CODE_OF_CONDUCT files
 
 ## Main features
 

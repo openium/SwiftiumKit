@@ -12,6 +12,14 @@ nothing
 ### Removed
 nothing
 
+## [0.2.0] - 2016-03-14
+### Added
+Added NSData from/to hex String conversions
+
+Added string hashes (MD5, SHA1, SHA224, SHA256, SHA384, SHA512)
+
+Added NSData AES encryption/decryption using string key
+
 ## [0.1.1] - 2016-03-10
 ### Changed
 Updated UIColor additions documentation and tests
@@ -20,7 +28,7 @@ Updated UIColor additions documentation and tests
 ### Added
 UIColor additions for create colors from RGB/ARGB/RGBA integers
 
-##
-[Unreleased]: https://github.com/openiumkit/SwiftiumKit/compare/v0.1.0...HEAD
-[0.1.1]: https://github.com/openiumkit/SwiftiumKit/compare/v0.1.1...v0.1.0
 
+[Unreleased]: https://github.com/openium/SwiftiumKit/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/openium/SwiftiumKit/compare/v0.2.0...v0.1.1
+[0.1.1]: https://github.com/openium/SwiftiumKit/compare/v0.1.1...v0.1.0
