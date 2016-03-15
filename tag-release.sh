@@ -1,13 +1,10 @@
 #!/bin/sh
 
-if [ $# -lt 1 ] ; then
-    echo "usage : `basename $0` v1.0.0";
-    exit -1
-fi
+VERSION=$(/usr/libexec/PlistBuddy SwiftiumKit/Info.plist -c "print CFBundleShortVersionString")
 
-TAG=$1
+TAG=v$VERSION
 
-echo "Have you updated the changelog ? (ctrl-c to go update it)"
+echo "Have you updated the changelog for version $VERSION ? (ctrl-c to go update it)"
 read
 
 set -e
