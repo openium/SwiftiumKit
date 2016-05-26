@@ -66,7 +66,7 @@ extension NSData {
         var idx = 0
         for byte in bytesArray {
             bytes[idx] = byte
-            idx++
+            idx += 1
         }
         self.init(bytesNoCopy: bytes, length: dataLen)
     }
