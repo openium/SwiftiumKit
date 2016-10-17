@@ -10,17 +10,17 @@ import Foundation
 
 // MARK: AES encrypt/decrypt
 
-private typealias SKCryptOperationFunction = (UnsafePointer<Void>, UInt32, UnsafePointer<Void>, UInt32, UnsafeMutablePointer<UInt>) -> UnsafeMutablePointer<UInt8>
+private typealias SKCryptOperationFunction = @convention(c) (UnsafeRawPointer, UInt32, UnsafeRawPointer, UInt32, UnsafeMutablePointer<UInt>) -> UnsafeMutablePointer<UInt8>?
 
 private enum EncryptionAlgorithm {
-    case AES128, AES192, AES256
+    case aes128, aes192, aes256
     
     var encryptFunction: SKCryptOperationFunction {
         var encryptFunction: SKCryptOperationFunction
         switch self {
-        case .AES128: encryptFunction = sk_crypto_encrypt_aes128
-        case .AES192: encryptFunction = sk_crypto_encrypt_aes192
-        case .AES256: encryptFunction = sk_crypto_encrypt_aes256
+        case .aes128: encryptFunction = sk_crypto_encrypt_aes128
+        case .aes192: encryptFunction = sk_crypto_encrypt_aes192
+        case .aes256: encryptFunction = sk_crypto_encrypt_aes256
         }
         return encryptFunction
     }
@@ -28,20 +28,19 @@ private enum EncryptionAlgorithm {
     var decryptFunction: SKCryptOperationFunction {
         var decryptFunction: SKCryptOperationFunction
         switch self {
-        case .AES128: decryptFunction = sk_crypto_decrypt_aes128
-        case .AES192: decryptFunction = sk_crypto_decrypt_aes192
-        case .AES256: decryptFunction = sk_crypto_decrypt_aes256
+        case .aes128: decryptFunction = sk_crypto_decrypt_aes128
+        case .aes192: decryptFunction = sk_crypto_decrypt_aes192
+        case .aes256: decryptFunction = sk_crypto_decrypt_aes256
         }
         return decryptFunction
     }
 }
 
-extension NSData {
+extension Data {
     
-    public convenience init?(base16EncodedString: String) {
+    public init?(base16EncodedString: String) {
         let dataLen = base16EncodedString.characters.count / 2
-        let allocatedBytes = malloc(dataLen)
-        let bytes = UnsafeMutablePointer<UInt8>(allocatedBytes)
+        let bytes = UnsafeMutablePointer<UInt8>.allocate(capacity: dataLen)
         
         let charactersAsUInt8 = base16EncodedString.characters.map {
             UInt8( strtoul((String($0)), nil, 16))
@@ -55,77 +54,76 @@ extension NSData {
             bytes[idx] = UInt8((c1<<4) + c2)
             strIdx += 2
         }
-        self.init(bytesNoCopy: bytes, length: dataLen)
+        self.init(bytesNoCopy: bytes, count: dataLen, deallocator: .free)
     }
     
-    public convenience init?(bytesArray: Array<UInt8>) {
+    public init?(bytesArray: Array<UInt8>) {
         let dataLen = bytesArray.count
-        let allocatedBytes = malloc(dataLen)
-        let bytes = UnsafeMutablePointer<UInt8>(allocatedBytes)
+        let bytes = UnsafeMutablePointer<UInt8>.allocate(capacity: dataLen)
         
         var idx = 0
         for byte in bytesArray {
             bytes[idx] = byte
             idx += 1
         }
-        self.init(bytesNoCopy: bytes, length: dataLen)
+        self.init(bytesNoCopy: bytes, count: dataLen, deallocator: .free)
     }
     
     public func base16EncodedString() -> String {
         var hex = String()
-        let bytes = UnsafePointer<UInt8>(self.bytes)
-        for idx in 0..<self.length {
+        let bytes = (self as NSData).bytes.bindMemory(to: UInt8.self, capacity: self.count)
+        for idx in 0..<self.count {
             let value: UInt8 = UnsafePointer<UInt8>(bytes)[idx]
-            hex.appendContentsOf(value.toHexaString())
+            hex.append(value.toHexaString())
         }
         return hex
     }
     
-    private func aesOperation(key: String, operation: SKCryptOperationFunction) -> NSData? {
-        let lengthPtr = UnsafeMutablePointer<UInt>.alloc(1)
-        defer { lengthPtr.dealloc(1) }
+    fileprivate func aesOperation(_ key: String, operation: SKCryptOperationFunction) -> Data? {
+        let lengthPtr = UnsafeMutablePointer<UInt>.allocate(capacity: 1)
+        defer { lengthPtr.deallocate(capacity: 1) }
         
-        let buffer = operation(self.bytes, UInt32(self.length), Array<UInt8>(key.utf8), UInt32(key.utf8.count), lengthPtr)
-        let length: Int = Int(lengthPtr[0])
-        if( buffer != nil ) {
-            return NSData(bytesNoCopy: buffer, length: length)
+        if let buffer = operation((self as NSData).bytes, UInt32(self.count), Array<UInt8>(key.utf8), UInt32(key.utf8.count), lengthPtr) {
+            let length: Int = Int(lengthPtr[0])
+            return Data(bytesNoCopy: UnsafeMutablePointer<UInt8>(buffer), count: length, deallocator: .free)
         }
+
         return nil
     }
     
     /// Encrypts an Array\<AESEncryptable> using provided `key` (utf8 data) with AES256
     /// :returns: Bytes array of encrypted data
-    public func aes256Encrypt(key: String) -> NSData? {
-        return aesOperation(key, operation: EncryptionAlgorithm.AES256.encryptFunction)
+    public func aes256Encrypt(_ key: String) -> Data? {
+        return aesOperation(key, operation: EncryptionAlgorithm.aes256.encryptFunction)
     }
     
     /// Decrypts an Array\<AESEncryptable> using provided `key` (utf8 data) with AES256
     /// :returns: Bytes array of decrypted data
-    public func aes256Decrypt(key: String) -> NSData? {
-        return aesOperation(key, operation: EncryptionAlgorithm.AES256.decryptFunction)
+    public func aes256Decrypt(_ key: String) -> Data? {
+        return aesOperation(key, operation: EncryptionAlgorithm.aes256.decryptFunction)
     }
     
     /// Encrypts an Array\<AESEncryptable> using provided `key` (utf8 data) with AES192
     /// :returns: Bytes array of encrypted data
-    public func aes192Encrypt(key: String) -> NSData? {
-        return aesOperation(key, operation: EncryptionAlgorithm.AES192.encryptFunction)
+    public func aes192Encrypt(_ key: String) -> Data? {
+        return aesOperation(key, operation: EncryptionAlgorithm.aes192.encryptFunction)
     }
     
     /// Decrypts an Array\<AESEncryptable> using provided `key` (utf8 data) with AES192
     /// :returns: Bytes array of decrypted data
-    public func aes192Decrypt(key: String) -> NSData? {
-        return aesOperation(key, operation: EncryptionAlgorithm.AES192.decryptFunction)
+    public func aes192Decrypt(_ key: String) -> Data? {
+        return aesOperation(key, operation: EncryptionAlgorithm.aes192.decryptFunction)
     }
     
     /// Encrypts an Array\<AESEncryptable> using provided `key` (utf8 data) with AES128
     /// :returns: Bytes array of encrypted data
-    public func aes128Encrypt(key: String) -> NSData? {
-        return aesOperation(key, operation: EncryptionAlgorithm.AES128.encryptFunction)
+    public func aes128Encrypt(_ key: String) -> Data? {
+        return aesOperation(key, operation: EncryptionAlgorithm.aes128.encryptFunction)
     }
     
     /// Decrypts an Array\<AESEncryptable> using provided `key` (utf8 data) with AES128
     /// :returns: Bytes array of decrypted data
-    public func aes128Decrypt(key: String) -> NSData? {
-        return aesOperation(key, operation: EncryptionAlgorithm.AES128.decryptFunction)
+    public func aes128Decrypt(_ key: String) -> Data? {
+        return aesOperation(key, operation: EncryptionAlgorithm.aes128.decryptFunction)
     }
 }

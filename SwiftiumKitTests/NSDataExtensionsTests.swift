@@ -24,7 +24,7 @@ class NSDataExtensionsTests: XCTestCase {
     
     func testBase16EncodedString() {
         // Given
-        let data = NSData(bytesArray: [UInt8(0x0b), 0xad, 0xf0, 0x0d])!
+        let data = Data(bytesArray: [UInt8(0x0b), 0xad, 0xf0, 0x0d])!
         
         // When
         let hex = data.base16EncodedString()
@@ -35,7 +35,7 @@ class NSDataExtensionsTests: XCTestCase {
     
     func testBase16EncodedStringBis() {
         // Given
-        let data = NSData(bytesArray: [UInt8(0xde), 0xad, 0xbe, 0xef])!
+        let data = Data(bytesArray: [UInt8(0xde), 0xad, 0xbe, 0xef])!
 
         // When
         let hex = data.base16EncodedString()
@@ -46,7 +46,7 @@ class NSDataExtensionsTests: XCTestCase {
     
     func testBase16EncodedString_withEmptyList_shouldReturnEmptyString() {
         // Given
-        let data = NSData()
+        let data = Data()
         
         // When
         let hex = data.base16EncodedString()
@@ -60,10 +60,10 @@ class NSDataExtensionsTests: XCTestCase {
         let str = "00112233"
         
         // When
-        let data = NSData(base16EncodedString: str)
+        let data = Data(base16EncodedString: str)
         
         // Expect
-        let expectedData = NSData(bytesArray: [UInt8(0x00), 0x11, 0x22, 0x33])!
+        let expectedData = Data(bytesArray: [UInt8(0x00), 0x11, 0x22, 0x33])!
         XCTAssertEqual(data, expectedData)
     }
     
@@ -72,22 +72,22 @@ class NSDataExtensionsTests: XCTestCase {
         let str = "🐥"
         
         // When
-        let data = NSData(base16EncodedString: str)
+        let data = Data(base16EncodedString: str)
         
         // Expect
-        XCTAssertEqual(data, NSData(bytesArray: []))
+        XCTAssertEqual(data, Data(bytesArray: []))
     }
     
     // MARK: AES encrypt/decrypt
     
     func fipsAES256KeyAsString() -> String {
-        let keyData = NSData(base16EncodedString: "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f")!
-        return String(data: keyData, encoding: NSASCIIStringEncoding)!
+        let keyData = Data(base16EncodedString: "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f")!
+        return String(data: keyData, encoding: String.Encoding.ascii)!
     }
     
-    func fipsData() -> NSData {
+    func fipsData() -> Data {
         let plaintext = "00112233445566778899aabbccddeeff"
-        return NSData(base16EncodedString: plaintext)!
+        return Data(base16EncodedString: plaintext)!
     }
     
     func testAes256Encrypt_withFIPS197EExample() {
@@ -101,7 +101,7 @@ class NSDataExtensionsTests: XCTestCase {
         let crypted = data.aes256Encrypt(key)
         
         // Expect
-        XCTAssertEqual(crypted!.subdataWithRange(NSMakeRange(0, 16)).base16EncodedString(), output)
+        XCTAssertEqual(crypted!.subdata(in: Range(uncheckedBounds: (lower: 0, upper: 16))).base16EncodedString(), output)
     }
     
     func testAes256Decrypt_withFIPS197EExample() {
@@ -120,8 +120,8 @@ class NSDataExtensionsTests: XCTestCase {
     // MARK: -
     
     func fipsAES128KeyAsString() -> String {
-        let keyData = NSData(base16EncodedString: "000102030405060708090a0b0c0d0e0f")!
-        return String(data: keyData, encoding: NSASCIIStringEncoding)!
+        let keyData = Data(base16EncodedString: "000102030405060708090a0b0c0d0e0f")!
+        return String(data: keyData, encoding: String.Encoding.ascii)!
     }
     
     func testAes128Encrypt_withFIPS197EExample() {
@@ -135,7 +135,7 @@ class NSDataExtensionsTests: XCTestCase {
         let crypted = data.aes128Encrypt(key)
         
         // Expect
-        XCTAssertEqual(crypted!.subdataWithRange(NSMakeRange(0, 16)).base16EncodedString(), output)
+        XCTAssertEqual(crypted!.subdata(in: Range(uncheckedBounds: (lower: 0, upper: 16))).base16EncodedString(), output)
     }
     
     func testAes128Decrypt_withFIPS197EExample() {

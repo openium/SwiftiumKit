@@ -10,20 +10,20 @@ import Foundation
 
 // MARK: Hashes
 
-private typealias SKCryptoFunctionPointer = (UnsafePointer<Void>, UInt32, UnsafePointer<Void>) -> Void
+private typealias SKCryptoFunctionPointer = (UnsafeRawPointer, UInt32, UnsafeRawPointer) -> Void
 
 private enum CryptoAlgorithm {
-    case MD5, SHA1, SHA224, SHA256, SHA384, SHA512
+    case md5, sha1, sha224, sha256, sha384, sha512
     
     var cryptoFunction: SKCryptoFunctionPointer {
         var result: SKCryptoFunctionPointer
         switch self {
-        case .MD5: result = sk_crypto_md5
-        case .SHA1: result = sk_crypto_sha1
-        case .SHA224: result = sk_crypto_sha224
-        case .SHA256: result = sk_crypto_sha256
-        case .SHA384: result = sk_crypto_sha384
-        case .SHA512: result = sk_crypto_sha512
+        case .md5: result = sk_crypto_md5
+        case .sha1: result = sk_crypto_sha1
+        case .sha224: result = sk_crypto_sha224
+        case .sha256: result = sk_crypto_sha256
+        case .sha384: result = sk_crypto_sha384
+        case .sha512: result = sk_crypto_sha512
         }
         return result
     }
@@ -31,12 +31,12 @@ private enum CryptoAlgorithm {
     var digestLength: Int {
         var length: Int
         switch self {
-        case .MD5: length = Int(SK_MD5_DIGEST_LENGTH)
-        case .SHA1: length = Int(SK_SHA1_DIGEST_LENGTH)
-        case .SHA224: length = Int(SK_SHA224_DIGEST_LENGTH)
-        case .SHA256: length = Int(SK_SHA256_DIGEST_LENGTH)
-        case .SHA384: length = Int(SK_SHA384_DIGEST_LENGTH)
-        case .SHA512: length = Int(SK_SHA512_DIGEST_LENGTH)
+        case .md5: length = Int(SK_MD5_DIGEST_LENGTH)
+        case .sha1: length = Int(SK_SHA1_DIGEST_LENGTH)
+        case .sha224: length = Int(SK_SHA224_DIGEST_LENGTH)
+        case .sha256: length = Int(SK_SHA256_DIGEST_LENGTH)
+        case .sha384: length = Int(SK_SHA384_DIGEST_LENGTH)
+        case .sha512: length = Int(SK_SHA512_DIGEST_LENGTH)
         }
         return length
     }
@@ -44,49 +44,49 @@ private enum CryptoAlgorithm {
 
 extension String.UTF8View {
     
-    var md5: NSData {
-        return self.hashUsingAlgorithm(.MD5)
+    var md5: Data {
+        return self.hashUsingAlgorithm(.md5)
     }
     
-    var sha1: NSData {
-        return self.hashUsingAlgorithm(.SHA1)
+    var sha1: Data {
+        return self.hashUsingAlgorithm(.sha1)
     }
     
-    var sha224: NSData {
-        return self.hashUsingAlgorithm(.SHA224)
+    var sha224: Data {
+        return self.hashUsingAlgorithm(.sha224)
     }
 
-    var sha256: NSData {
-        return self.hashUsingAlgorithm(.SHA256)
+    var sha256: Data {
+        return self.hashUsingAlgorithm(.sha256)
     }
 
-    var sha384: NSData {
-        return self.hashUsingAlgorithm(.SHA384)
+    var sha384: Data {
+        return self.hashUsingAlgorithm(.sha384)
     }
 
-    var sha512: NSData {
-        return self.hashUsingAlgorithm(.SHA512)
+    var sha512: Data {
+        return self.hashUsingAlgorithm(.sha512)
     }
     
-    private func hashUsingAlgorithm(algorithm: CryptoAlgorithm) -> NSData {
+    fileprivate func hashUsingAlgorithm(_ algorithm: CryptoAlgorithm) -> Data {
         let cryptoFunction = algorithm.cryptoFunction
         let length = algorithm.digestLength
         return self.hash(cryptoFunction, length: length)
     }
     
-    private func hash(cryptoFunction: SKCryptoFunctionPointer, length: Int) -> NSData {
-        let hashBytes = UnsafeMutablePointer<UInt8>.alloc(length)
+    fileprivate func hash(_ cryptoFunction: SKCryptoFunctionPointer, length: Int) -> Data {
+        let hashBytes = UnsafeMutablePointer<UInt8>.allocate(capacity: length)
         //defer { hashBytes.dealloc(length) }
 
         cryptoFunction(Array<UInt8>(self), UInt32(self.count), hashBytes)
 
-        return NSData(bytesNoCopy: hashBytes, length: length)
+        return Data(bytesNoCopy: UnsafeMutablePointer<UInt8>(hashBytes), count: length, deallocator: .free)
     }
 }
 
 extension String {
 
-    public var md5HashData: NSData {
+    public var md5HashData: Data {
         return self.utf8.md5
     }
     
@@ -96,7 +96,7 @@ extension String {
         return self.md5HashData.base16EncodedString()
     }
 
-    public var sha1HashData: NSData {
+    public var sha1HashData: Data {
         return self.utf8.sha1
     }
     
@@ -106,7 +106,7 @@ extension String {
         return self.sha1HashData.base16EncodedString()
     }
     
-    public var sha224HashData: NSData {
+    public var sha224HashData: Data {
         return self.utf8.sha224
     }
     
@@ -116,7 +116,7 @@ extension String {
         return self.sha224HashData.base16EncodedString()
     }
     
-    public var sha256HashData: NSData {
+    public var sha256HashData: Data {
         return self.utf8.sha256
     }
     
@@ -126,7 +126,7 @@ extension String {
         return self.sha256HashData.base16EncodedString()
     }
     
-    public var sha384HashData: NSData {
+    public var sha384HashData: Data {
         return self.utf8.sha384
     }
     
@@ -136,7 +136,7 @@ extension String {
         return self.sha384HashData.base16EncodedString()
     }
     
-    public var sha512HashData: NSData {
+    public var sha512HashData: Data {
         return self.utf8.sha512
     }
     
@@ -147,15 +147,15 @@ extension String {
     }
     
     
-    public func hmacSha1(key: String) -> String {
+    public func hmacSha1(_ key: String) -> String {
         let keyData = Array<UInt8>(key.utf8)
         let length = Int(20)
         
-        let hashBytes = UnsafeMutablePointer<UInt8>.alloc(length)
+        let hashBytes = UnsafeMutablePointer<UInt8>.allocate(capacity: length)
         //defer { hashBytes.dealloc(length) }
         
         sk_crypto_hmac_sha1(Array<UInt8>(self.utf8), UInt32(self.utf8.count), keyData, UInt32(key.utf8.count), hashBytes)
-        let data = NSData(bytesNoCopy: hashBytes, length: length)
+        let data = Data(bytesNoCopy: UnsafeMutablePointer<UInt8>(hashBytes), count: length, deallocator: .free)
         
         return data.base16EncodedString()
     }
