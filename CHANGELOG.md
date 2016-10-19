@@ -12,6 +12,10 @@ nothing
 ### Removed
 nothing
 
+## [1.1.1] - 2016-10-19
+### Changed
+Removes markdown added by error to target
+
 ## [1.1.0] - 2016-10-19
 ### Changed
 UIFont extensions to print all fonts / search font nearby a font name
@@ -36,7 +40,8 @@ Updated UIColor additions documentation and tests
 ### Added
 UIColor additions for create colors from RGB/ARGB/RGBA integers
 
-[Unreleased]: https://github.com/openium/SwiftiumKit/compare/v1.1.0...HEAD
+[Unreleased]: https://github.com/openium/SwiftiumKit/compare/v1.1.1...HEAD
+[1.1.1]: https://github.com/openium/SwiftiumKit/compare/v1.1.1...v1.1.0
 [1.1.0]: https://github.com/openium/SwiftiumKit/compare/v1.1.0...v1.0.0
 [1.0.0]: https://github.com/openium/SwiftiumKit/compare/v1.0.0...v0.2.0
 [0.2.0]: https://github.com/openium/SwiftiumKit/compare/v0.2.0...v0.1.1

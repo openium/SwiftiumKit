@@ -21,7 +21,6 @@
 		BA8A2D501C9713D600125DC3 /* UInt8ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8A2D4F1C9713D600125DC3 /* UInt8ExtensionsTests.swift */; };
 		BAFA99E11DB7817600582104 /* UIFontExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFA99E01DB7817600582104 /* UIFontExtensions.swift */; };
 		BAFA99E31DB781D600582104 /* UIFontExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFA99E21DB781D600582104 /* UIFontExtensionsTests.swift */; };
-		BAFA99E51DB786EF00582104 /* CONTRIBUTING.md in Sources */ = {isa = PBXBuildFile; fileRef = BAFA99E41DB786EF00582104 /* CONTRIBUTING.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -308,7 +307,6 @@
 				BA8A2D4A1C96FAAD00125DC3 /* NSDataExtensions.swift in Sources */,
 				BAFA99E11DB7817600582104 /* UIFontExtensions.swift in Sources */,
 				BA8A2D4E1C9713AD00125DC3 /* UInt8Extensions.swift in Sources */,
-				BAFA99E51DB786EF00582104 /* CONTRIBUTING.md in Sources */,
 				BA4D06821C91E602000DD654 /* Crypto.m in Sources */,
 				BA8961F41C8EDC0A00305CB0 /* UIColorExtensions.swift in Sources */,
 			);
