@@ -9,16 +9,18 @@
 import UIKit
 
 extension UIColor {
-
-    /** Method to instanciate a color from an int (0xRRGGBB).
     
-    Usage example :
-    
-    color = UIColor(rgb: 0xAABBCC)
-    
-    @param rgb an int which bytes represents red, green and blue components
-    @return an UIColor instance
-    */
+    /**
+     Method to instanciate a color from an int (0xRRGGBB)
+     
+     Usage example :
+     ````
+     color = UIColor(rgb: 0xAABBCC)
+     ````
+     
+     - Parameter rgb: an int which bytes represents red, green and blue components.
+     - Returns: an UIColor instance
+     */
     public convenience init(rgb: Int64) {
         let alpha = CGFloat(1.0)
         let red   = CGFloat((0xff0000   & rgb) >> 16) / 255.0
@@ -27,14 +29,16 @@ extension UIColor {
         self.init(red: red, green: green, blue: blue, alpha: alpha)
     }
     
-    /** Method to instanciate a color from an int (0xRRGGBBAA).
+    /**
+     Method to instanciate a color from an int (0xRRGGBBAA).
      
      Usage example :
-     
+     ````
      color = UIColor(rgb: 0xAABBCCDD)
+     ````
      
-     @param rgba an int which bytes represents red, green blue and alpha components
-     @return an UIColor instance
+     - Parameter rgba: an int which bytes represents red, green blue and alpha components
+     - Returns: an UIColor instance
      */
     public convenience init(rgba: Int64) {
         let red   = CGFloat((0xff000000 & rgba) >> 24) / 255.0
@@ -44,14 +48,16 @@ extension UIColor {
         self.init(red: red, green: green, blue: blue, alpha: alpha)
     }
     
-    /** Method to instanciate a color from an int (0xAARRGGBB).
+    /**
+     Method to instanciate a color from an int (0xAARRGGBB).
      
      Usage example :
-     
+     ````
      color = UIColor(rgb: 0xAABBCCDD)
+     ````
      
-     @param argb an int which bytes represents alpha, red, green and blue components
-     @return an UIColor instance
+     - Parameter argb: an int which bytes represents alpha, red, green and blue components
+     - Returns: an UIColor instance
      */
     public convenience init(argb: Int64) {
         let alpha = CGFloat((0xff000000 & argb) >> 24) / 255.0

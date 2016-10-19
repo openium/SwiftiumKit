@@ -13,12 +13,15 @@
 		BA4D06821C91E602000DD654 /* Crypto.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4D06801C91E602000DD654 /* Crypto.m */; };
 		BA8961DB1C8EDBB100305CB0 /* SwiftiumKit.h in Headers */ = {isa = PBXBuildFile; fileRef = BA8961DA1C8EDBB100305CB0 /* SwiftiumKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BA8961E21C8EDBB100305CB0 /* SwiftiumKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA8961D71C8EDBB100305CB0 /* SwiftiumKit.framework */; };
-		BA8961F21C8EDBFC00305CB0 /* UIColor+SKAdditionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8961F11C8EDBFC00305CB0 /* UIColor+SKAdditionsTests.swift */; };
-		BA8961F41C8EDC0A00305CB0 /* UIColor+SKAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8961F31C8EDC0A00305CB0 /* UIColor+SKAdditions.swift */; };
+		BA8961F21C8EDBFC00305CB0 /* UIColorExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8961F11C8EDBFC00305CB0 /* UIColorExtensionsTests.swift */; };
+		BA8961F41C8EDC0A00305CB0 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8961F31C8EDC0A00305CB0 /* UIColorExtensions.swift */; };
 		BA8A2D4A1C96FAAD00125DC3 /* NSDataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8A2D491C96FAAD00125DC3 /* NSDataExtensions.swift */; };
 		BA8A2D4C1C96FAC800125DC3 /* NSDataExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8A2D4B1C96FAC800125DC3 /* NSDataExtensionsTests.swift */; };
 		BA8A2D4E1C9713AD00125DC3 /* UInt8Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8A2D4D1C9713AD00125DC3 /* UInt8Extensions.swift */; };
 		BA8A2D501C9713D600125DC3 /* UInt8ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8A2D4F1C9713D600125DC3 /* UInt8ExtensionsTests.swift */; };
+		BAFA99E11DB7817600582104 /* UIFontExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFA99E01DB7817600582104 /* UIFontExtensions.swift */; };
+		BAFA99E31DB781D600582104 /* UIFontExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFA99E21DB781D600582104 /* UIFontExtensionsTests.swift */; };
+		BAFA99E51DB786EF00582104 /* CONTRIBUTING.md in Sources */ = {isa = PBXBuildFile; fileRef = BAFA99E41DB786EF00582104 /* CONTRIBUTING.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,12 +47,15 @@
 		BA8961DC1C8EDBB100305CB0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA8961E11C8EDBB100305CB0 /* SwiftiumKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftiumKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA8961E81C8EDBB100305CB0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BA8961F11C8EDBFC00305CB0 /* UIColor+SKAdditionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+SKAdditionsTests.swift"; sourceTree = "<group>"; };
-		BA8961F31C8EDC0A00305CB0 /* UIColor+SKAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+SKAdditions.swift"; sourceTree = "<group>"; };
+		BA8961F11C8EDBFC00305CB0 /* UIColorExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtensionsTests.swift; sourceTree = "<group>"; };
+		BA8961F31C8EDC0A00305CB0 /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		BA8A2D491C96FAAD00125DC3 /* NSDataExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDataExtensions.swift; sourceTree = "<group>"; };
 		BA8A2D4B1C96FAC800125DC3 /* NSDataExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDataExtensionsTests.swift; sourceTree = "<group>"; };
 		BA8A2D4D1C9713AD00125DC3 /* UInt8Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UInt8Extensions.swift; sourceTree = "<group>"; };
 		BA8A2D4F1C9713D600125DC3 /* UInt8ExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UInt8ExtensionsTests.swift; sourceTree = "<group>"; };
+		BAFA99E01DB7817600582104 /* UIFontExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFontExtensions.swift; sourceTree = "<group>"; };
+		BAFA99E21DB781D600582104 /* UIFontExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFontExtensionsTests.swift; sourceTree = "<group>"; };
+		BAFA99E41DB786EF00582104 /* CONTRIBUTING.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CONTRIBUTING.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +80,8 @@
 		BA4D066C1C91C2E6000DD654 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
-				BA8961F31C8EDC0A00305CB0 /* UIColor+SKAdditions.swift */,
+				BA8961F31C8EDC0A00305CB0 /* UIColorExtensions.swift */,
+				BAFA99E01DB7817600582104 /* UIFontExtensions.swift */,
 			);
 			name = UIKit;
 			sourceTree = "<group>";
@@ -100,7 +107,8 @@
 		BA4D066F1C91C304000DD654 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
-				BA8961F11C8EDBFC00305CB0 /* UIColor+SKAdditionsTests.swift */,
+				BA8961F11C8EDBFC00305CB0 /* UIColorExtensionsTests.swift */,
+				BAFA99E21DB781D600582104 /* UIFontExtensionsTests.swift */,
 			);
 			name = UIKit;
 			sourceTree = "<group>";
@@ -137,9 +145,8 @@
 		BA8961CD1C8EDBB100305CB0 = {
 			isa = PBXGroup;
 			children = (
-				BA4D088E1C941243000DD654 /* CHANGELOG.md */,
+				BAFA99E61DB786F600582104 /* Documentation */,
 				BA8961D81C8EDBB100305CB0 /* Products */,
-				BA4D088D1C94123C000DD654 /* README.md */,
 				BA8961D91C8EDBB100305CB0 /* SwiftiumKit */,
 				BA8961E51C8EDBB100305CB0 /* SwiftiumKitTests */,
 				BA4D088F1C94124F000DD654 /* tag-release.sh */,
@@ -173,6 +180,16 @@
 				BA8961E81C8EDBB100305CB0 /* Info.plist */,
 			);
 			path = SwiftiumKitTests;
+			sourceTree = "<group>";
+		};
+		BAFA99E61DB786F600582104 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				BAFA99E41DB786EF00582104 /* CONTRIBUTING.md */,
+				BA4D088E1C941243000DD654 /* CHANGELOG.md */,
+				BA4D088D1C94123C000DD654 /* README.md */,
+			);
+			name = Documentation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,9 +306,11 @@
 			files = (
 				BA4D06691C91C2B5000DD654 /* StringExtensions.swift in Sources */,
 				BA8A2D4A1C96FAAD00125DC3 /* NSDataExtensions.swift in Sources */,
+				BAFA99E11DB7817600582104 /* UIFontExtensions.swift in Sources */,
 				BA8A2D4E1C9713AD00125DC3 /* UInt8Extensions.swift in Sources */,
+				BAFA99E51DB786EF00582104 /* CONTRIBUTING.md in Sources */,
 				BA4D06821C91E602000DD654 /* Crypto.m in Sources */,
-				BA8961F41C8EDC0A00305CB0 /* UIColor+SKAdditions.swift in Sources */,
+				BA8961F41C8EDC0A00305CB0 /* UIColorExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,7 +321,8 @@
 				BA8A2D501C9713D600125DC3 /* UInt8ExtensionsTests.swift in Sources */,
 				BA8A2D4C1C96FAC800125DC3 /* NSDataExtensionsTests.swift in Sources */,
 				BA4D066B1C91C2DD000DD654 /* StringExtensionsTests.swift in Sources */,
-				BA8961F21C8EDBFC00305CB0 /* UIColor+SKAdditionsTests.swift in Sources */,
+				BA8961F21C8EDBFC00305CB0 /* UIColorExtensionsTests.swift in Sources */,
+				BAFA99E31DB781D600582104 /* UIFontExtensionsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
