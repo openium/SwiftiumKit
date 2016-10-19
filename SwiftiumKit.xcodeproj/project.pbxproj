@@ -19,6 +19,8 @@
 		BA8A2D4C1C96FAC800125DC3 /* NSDataExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8A2D4B1C96FAC800125DC3 /* NSDataExtensionsTests.swift */; };
 		BA8A2D4E1C9713AD00125DC3 /* UInt8Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8A2D4D1C9713AD00125DC3 /* UInt8Extensions.swift */; };
 		BA8A2D501C9713D600125DC3 /* UInt8ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8A2D4F1C9713D600125DC3 /* UInt8ExtensionsTests.swift */; };
+		BAF01A7F1DB7F59A006F81D3 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF01A7E1DB7F59A006F81D3 /* UIImageExtensions.swift */; };
+		BAF01A811DB7F610006F81D3 /* UIImageExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF01A801DB7F610006F81D3 /* UIImageExtensionsTests.swift */; };
 		BAFA99E11DB7817600582104 /* UIFontExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFA99E01DB7817600582104 /* UIFontExtensions.swift */; };
 		BAFA99E31DB781D600582104 /* UIFontExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFA99E21DB781D600582104 /* UIFontExtensionsTests.swift */; };
 /* End PBXBuildFile section */
@@ -52,6 +54,8 @@
 		BA8A2D4B1C96FAC800125DC3 /* NSDataExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDataExtensionsTests.swift; sourceTree = "<group>"; };
 		BA8A2D4D1C9713AD00125DC3 /* UInt8Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UInt8Extensions.swift; sourceTree = "<group>"; };
 		BA8A2D4F1C9713D600125DC3 /* UInt8ExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UInt8ExtensionsTests.swift; sourceTree = "<group>"; };
+		BAF01A7E1DB7F59A006F81D3 /* UIImageExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
+		BAF01A801DB7F610006F81D3 /* UIImageExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtensionsTests.swift; sourceTree = "<group>"; };
 		BAFA99E01DB7817600582104 /* UIFontExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFontExtensions.swift; sourceTree = "<group>"; };
 		BAFA99E21DB781D600582104 /* UIFontExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFontExtensionsTests.swift; sourceTree = "<group>"; };
 		BAFA99E41DB786EF00582104 /* CONTRIBUTING.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CONTRIBUTING.md; sourceTree = "<group>"; };
@@ -81,6 +85,7 @@
 			children = (
 				BA8961F31C8EDC0A00305CB0 /* UIColorExtensions.swift */,
 				BAFA99E01DB7817600582104 /* UIFontExtensions.swift */,
+				BAF01A7E1DB7F59A006F81D3 /* UIImageExtensions.swift */,
 			);
 			name = UIKit;
 			sourceTree = "<group>";
@@ -108,6 +113,7 @@
 			children = (
 				BA8961F11C8EDBFC00305CB0 /* UIColorExtensionsTests.swift */,
 				BAFA99E21DB781D600582104 /* UIFontExtensionsTests.swift */,
+				BAF01A801DB7F610006F81D3 /* UIImageExtensionsTests.swift */,
 			);
 			name = UIKit;
 			sourceTree = "<group>";
@@ -305,6 +311,7 @@
 			files = (
 				BA4D06691C91C2B5000DD654 /* StringExtensions.swift in Sources */,
 				BA8A2D4A1C96FAAD00125DC3 /* NSDataExtensions.swift in Sources */,
+				BAF01A7F1DB7F59A006F81D3 /* UIImageExtensions.swift in Sources */,
 				BAFA99E11DB7817600582104 /* UIFontExtensions.swift in Sources */,
 				BA8A2D4E1C9713AD00125DC3 /* UInt8Extensions.swift in Sources */,
 				BA4D06821C91E602000DD654 /* Crypto.m in Sources */,
@@ -319,6 +326,7 @@
 				BA8A2D501C9713D600125DC3 /* UInt8ExtensionsTests.swift in Sources */,
 				BA8A2D4C1C96FAC800125DC3 /* NSDataExtensionsTests.swift in Sources */,
 				BA4D066B1C91C2DD000DD654 /* StringExtensionsTests.swift in Sources */,
+				BAF01A811DB7F610006F81D3 /* UIImageExtensionsTests.swift in Sources */,
 				BA8961F21C8EDBFC00305CB0 /* UIColorExtensionsTests.swift in Sources */,
 				BAFA99E31DB781D600582104 /* UIFontExtensionsTests.swift in Sources */,
 			);

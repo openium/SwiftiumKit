@@ -67,4 +67,30 @@ extension UIColor {
         self.init(red: red, green: green, blue: blue, alpha: alpha)
     }
     
+    /**
+     Creates an image of `size` filled with current color
+     
+     Usage example:
+     ````
+     UIColor.red.image(withSize: CGSize(width: 10, height: 10))
+     ````
+     
+     - Parameter size: a CGSize
+     - Returns: an UIImage instance
+     */
+    public func image(withSize size: CGSize) -> UIImage? {
+        var image: UIImage? = nil
+        let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        UIGraphicsBeginImageContextWithOptions(rect.size, false, 0);
+        if let context = UIGraphicsGetCurrentContext() {
+            context.setFillColor(cgColor)
+            context.fill(rect)
+            
+            image = UIGraphicsGetImageFromCurrentImageContext()
+            
+        }
+        UIGraphicsEndImageContext()
+        return image
+    }
+
 }
