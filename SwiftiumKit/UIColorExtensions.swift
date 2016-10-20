@@ -81,13 +81,12 @@ extension UIColor {
     public func image(withSize size: CGSize) -> UIImage? {
         var image: UIImage? = nil
         let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-        UIGraphicsBeginImageContextWithOptions(rect.size, false, 0);
+        UIGraphicsBeginImageContextWithOptions(rect.size, false, 0)
         if let context = UIGraphicsGetCurrentContext() {
             context.setFillColor(cgColor)
             context.fill(rect)
             
-            image = UIGraphicsGetImageFromCurrentImageContext()
-            
+            image = UIGraphicsGetImageFromCurrentImageContext()   
         }
         UIGraphicsEndImageContext()
         return image
