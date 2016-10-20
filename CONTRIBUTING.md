@@ -4,6 +4,8 @@ PR are welcome, public APIs should be tested and documented
 
 # Documenting APIs:
 
+@see http://nshipster.com/swift-documentation/
+
 ````
 extension String {
     /**

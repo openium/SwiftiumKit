@@ -12,12 +12,17 @@ nothing
 ### Removed
 nothing
 
+## [1.2.0] - 2016-10-19
+### Added
+Add UIImage addition to colorize an image with another color
+Add UIColor addition to create an image filled with current color
+
 ## [1.1.1] - 2016-10-19
 ### Changed
 Removes markdown added by error to target
 
 ## [1.1.0] - 2016-10-19
-### Changed
+### Added
 UIFont extensions to print all fonts / search font nearby a font name
 
 ## [1.0.0] - 2016-10-17
