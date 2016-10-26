@@ -1,6 +1,6 @@
 # SwiftiumKit
 
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![Build Status](https://travis-ci.org/openium/SwiftiumKit.svg?branch=master)](https://travis-ci.org/openium/SwiftiumKit)
 
 This "Kit" adds many feature to speed up iOS app development. It is a rewrite of our internal ObjC Kit, but using Swift features, instead of runtime hacks. Unit tests (using given-when-expect format) and documentation are very important.
 
