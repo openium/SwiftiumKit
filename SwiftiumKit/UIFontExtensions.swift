@@ -25,7 +25,7 @@ extension UIFont {
     /**
      Method to get font names 'near' a given name.
      
-     Near algorithm removes '_', ' ' (space), '-' characters for searching available fonts
+     Near algorithm removes '_', ' ' (space), '-' characters from `fontName` for searching available fonts, if a font contains this searched name, it is added to the result array
      
      Usage example :
      ````
@@ -51,7 +51,7 @@ extension UIFont {
                 simplifiedFontName = simplifiedFontName.replacingOccurrences(of: " ", with: "")
                 simplifiedFontName = simplifiedFontName.replacingOccurrences(of: "_", with: "")
                 simplifiedFontName = simplifiedFontName.replacingOccurrences(of: "-", with: "")
-                if simplifiedFontName == searchedFontName {
+                if simplifiedFontName.contains(searchedFontName) {
                     maybeFontNames.append(fontName)
                 }
             }

@@ -4,7 +4,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased](https://github.com/openium/SwiftiumKit/compare/latest...HEAD)
 ### Added
-travis CI configuration
+travis CI configuration / badge in README
+Add CodeBeat badge in README
 
 ### Changed
 nothing
