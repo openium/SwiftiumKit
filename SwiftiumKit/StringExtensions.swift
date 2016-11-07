@@ -160,4 +160,11 @@ extension String {
         return data.base16EncodedString()
     }
     
+    /// Int subscript to String
+    /// :returns: A String containing the character at position i or nil
+    public subscript(i: Int) -> String? {
+        guard i >= 0 && i < characters.count else { return nil }
+        
+        return String(self[index(startIndex, offsetBy: i)])
+    }
 }

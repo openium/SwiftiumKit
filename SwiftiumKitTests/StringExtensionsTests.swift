@@ -102,4 +102,28 @@ class StringExtensionsTests: XCTestCase {
         // Expect
         XCTAssertEqual(shaStr, "18835978a0297b5efca1e44d954f4f0c00b2b903")
     }
+    
+    func testIntSubscript() {
+        // Given
+        let someString = "5f4dcc3b5aa765d61d8327deb882cf99";
+        
+        // When
+        let thirdChar = someString[3]
+        let lastChar = someString[someString.characters.count - 1]
+        
+        // Expect
+        XCTAssertEqual(thirdChar, "d")
+        XCTAssertEqual(lastChar, "9")
+    }
+    
+    func testIntSubscript_outOfRange_shouldReturnNil() {
+        // Given
+        let someString = "5f4dcc3b5aa765d61d8327deb882cf99";
+        
+        // When
+        let outOfRangeChar = someString[someString.characters.count]
+        
+        // Expect
+        XCTAssertEqual(outOfRangeChar, nil)
+    }
 }
