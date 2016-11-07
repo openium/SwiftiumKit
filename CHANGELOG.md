@@ -1,14 +1,20 @@
 # Change Log
-All notable changes to this project will be documented in this file.
-This project adheres to [Semantic Versioning](http://semver.org/).
-Add addition operators on Dictionaries.
 Add int subscript to String extension.
 Add closed int range subscript to String extension.
 Add int range subscript to String extension.
 
 ## [Unreleased](https://github.com/openium/SwiftiumKit/compare/latest...HEAD)
 ### Added
-nothing
+
+### Changed
+
+### Removed
+
+## [1.3.0] (https://github.com/openium/SwiftiumKit/compare/v1.2.0...v1.3.0)- 2016-11-07
+### Added
+travis CI configuration / badge in README
+Add CodeBeat badge in README
+Add addition operators on Dictionaries.
 
 ### Changed
 nothing
