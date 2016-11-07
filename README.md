@@ -13,7 +13,7 @@ Work in progress (see to be done section below)
 
 # To be done :
 
-Add CONTRIBUTING and CODE_OF_CONDUCT files
+Add CODE_OF_CONDUCT files
 
 ## Main features
 
