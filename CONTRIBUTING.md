@@ -1,6 +1,7 @@
 # Contributing
 
 PR are welcome, public APIs should be tested and documented
+Don't forget to update the CHANGELOG.md
 
 # Documenting APIs:
 
