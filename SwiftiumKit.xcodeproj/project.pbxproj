@@ -23,6 +23,8 @@
 		BAF01A811DB7F610006F81D3 /* UIImageExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF01A801DB7F610006F81D3 /* UIImageExtensionsTests.swift */; };
 		BAFA99E11DB7817600582104 /* UIFontExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFA99E01DB7817600582104 /* UIFontExtensions.swift */; };
 		BAFA99E31DB781D600582104 /* UIFontExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFA99E21DB781D600582104 /* UIFontExtensionsTests.swift */; };
+		F9E838D31DCCE15700F3C5FB /* DictionaryOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E838D21DCCE15700F3C5FB /* DictionaryOperators.swift */; };
+		F9E838D61DCCE2D000F3C5FB /* DictionaryOperatorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E838D51DCCE2D000F3C5FB /* DictionaryOperatorsTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		BAFA99E01DB7817600582104 /* UIFontExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFontExtensions.swift; sourceTree = "<group>"; };
 		BAFA99E21DB781D600582104 /* UIFontExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFontExtensionsTests.swift; sourceTree = "<group>"; };
 		BAFA99E41DB786EF00582104 /* CONTRIBUTING.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CONTRIBUTING.md; sourceTree = "<group>"; };
+		F9E838D21DCCE15700F3C5FB /* DictionaryOperators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryOperators.swift; sourceTree = "<group>"; };
+		F9E838D51DCCE2D000F3C5FB /* DictionaryOperatorsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryOperatorsTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +176,7 @@
 			children = (
 				BA4D06731C91E023000DD654 /* C */,
 				BA4D066D1C91C2F2000DD654 /* Additions */,
+				F9E838D11DCCE14300F3C5FB /* Operators */,
 				BA8961DC1C8EDBB100305CB0 /* Info.plist */,
 				BA8961DA1C8EDBB100305CB0 /* SwiftiumKit.h */,
 			);
@@ -182,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				BA4D066E1C91C2FE000DD654 /* Additions */,
+				F9E838D41DCCE2A400F3C5FB /* Operators */,
 				BA8961E81C8EDBB100305CB0 /* Info.plist */,
 			);
 			path = SwiftiumKitTests;
@@ -195,6 +201,22 @@
 				BA4D088D1C94123C000DD654 /* README.md */,
 			);
 			name = Documentation;
+			sourceTree = "<group>";
+		};
+		F9E838D11DCCE14300F3C5FB /* Operators */ = {
+			isa = PBXGroup;
+			children = (
+				F9E838D21DCCE15700F3C5FB /* DictionaryOperators.swift */,
+			);
+			name = Operators;
+			sourceTree = "<group>";
+		};
+		F9E838D41DCCE2A400F3C5FB /* Operators */ = {
+			isa = PBXGroup;
+			children = (
+				F9E838D51DCCE2D000F3C5FB /* DictionaryOperatorsTests.swift */,
+			);
+			name = Operators;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,6 +332,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA4D06691C91C2B5000DD654 /* StringExtensions.swift in Sources */,
+				F9E838D31DCCE15700F3C5FB /* DictionaryOperators.swift in Sources */,
 				BA8A2D4A1C96FAAD00125DC3 /* NSDataExtensions.swift in Sources */,
 				BAF01A7F1DB7F59A006F81D3 /* UIImageExtensions.swift in Sources */,
 				BAFA99E11DB7817600582104 /* UIFontExtensions.swift in Sources */,
@@ -327,6 +350,7 @@
 				BA8A2D4C1C96FAC800125DC3 /* NSDataExtensionsTests.swift in Sources */,
 				BA4D066B1C91C2DD000DD654 /* StringExtensionsTests.swift in Sources */,
 				BAF01A811DB7F610006F81D3 /* UIImageExtensionsTests.swift in Sources */,
+				F9E838D61DCCE2D000F3C5FB /* DictionaryOperatorsTests.swift in Sources */,
 				BA8961F21C8EDBFC00305CB0 /* UIColorExtensionsTests.swift in Sources */,
 				BAFA99E31DB781D600582104 /* UIFontExtensionsTests.swift in Sources */,
 			);
