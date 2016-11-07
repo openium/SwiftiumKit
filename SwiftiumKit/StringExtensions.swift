@@ -160,11 +160,39 @@ extension String {
         return data.base16EncodedString()
     }
     
-    /// Int subscript to String
-    /// :returns: A String containing the character at position i or nil
+    /**
+     Int subscript to String
+     
+     Usage example :
+     ````
+     let somestring = "some string"
+     let substring = somestring[0..3]
+     ````
+     
+     - Parameter i: index of the string
+     - Returns: a String containing the character at position i or nil if index is out of string bounds
+     */
     public subscript(i: Int) -> String? {
         guard i >= 0 && i < characters.count else { return nil }
         
         return String(self[index(startIndex, offsetBy: i)])
+    }
+    
+    /**
+     Int closed range subscript to String
+     
+     Usage example :
+     ````
+     let somestring = "some string"
+     let substring = somestring[0..3]
+     ````
+     - Parameter range: a closed range of the string
+     - Returns: a substring containing the characters in the specified range
+     */
+    public subscript(range: ClosedRange<Int>) -> String {
+        let lowerIndex = index(startIndex, offsetBy: max(0, range.lowerBound), limitedBy: endIndex) ?? endIndex
+        let upperIndex = index(lowerIndex, offsetBy: range.upperBound - range.lowerBound + 1, limitedBy: endIndex) ?? endIndex
+        
+        return substring(with: lowerIndex..<upperIndex)
     }
 }
