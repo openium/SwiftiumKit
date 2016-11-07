@@ -187,11 +187,29 @@ extension String {
      let substring = somestring[0..3]
      ````
      - Parameter range: a closed range of the string
-     - Returns: a substring containing the characters in the specified range
+     - Returns: a substring containing the characters in the specified closed range
      */
     public subscript(range: ClosedRange<Int>) -> String {
         let lowerIndex = index(startIndex, offsetBy: max(0, range.lowerBound), limitedBy: endIndex) ?? endIndex
         let upperIndex = index(lowerIndex, offsetBy: range.upperBound - range.lowerBound + 1, limitedBy: endIndex) ?? endIndex
+        
+        return substring(with: lowerIndex..<upperIndex)
+    }
+    
+    /**
+     Int range subscript to String
+     
+     Usage example :
+     ````
+     let somestring = "some string"
+     let substring = somestring[0..<3]
+     ````
+     - Parameter range: a range of the string
+     - Returns: a substring containing the characters in the specified range
+     */
+    public subscript(range: Range<Int>) -> String {
+        let lowerIndex = index(startIndex, offsetBy: max(0, range.lowerBound), limitedBy: endIndex) ?? endIndex
+        let upperIndex = index(lowerIndex, offsetBy: range.upperBound - range.lowerBound, limitedBy: endIndex) ?? endIndex
         
         return substring(with: lowerIndex..<upperIndex)
     }

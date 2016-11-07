@@ -149,4 +149,27 @@ class StringExtensionsTests: XCTestCase {
         // Expect
         XCTAssertEqual(last4Chars, "cf99")
     }
+    
+    func testRangeIntSubscript() {
+        // Given
+        let someString = "5f4dcc3b5aa765d61d8327deb882cf99";
+        
+        // When
+        let first3Chars = someString[0..<3]
+        
+        // Expect
+        XCTAssertEqual(first3Chars, "5f4")
+    }
+    
+    func testRangeIntSubscript_outOfRange_shouldBounds() {
+        // Given
+        let someString = "5f4dcc3b5aa765d61d8327deb882cf99";
+        
+        // When
+        let index = someString.characters.count - 4
+        let last4Chars = someString[index...Int.max]
+        
+        // Expect
+        XCTAssertEqual(last4Chars, "cf99")
+    }
 }
