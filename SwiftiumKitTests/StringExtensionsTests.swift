@@ -103,6 +103,8 @@ class StringExtensionsTests: XCTestCase {
         XCTAssertEqual(shaStr, "18835978a0297b5efca1e44d954f4f0c00b2b903")
     }
     
+    // MARK: -
+    
     func testIntSubscript() {
         // Given
         let someString = "5f4dcc3b5aa765d61d8327deb882cf99";
@@ -338,5 +340,28 @@ class StringExtensionsTests: XCTestCase {
         
         // Expect
         XCTAssertEqual(someString, expected)
+    }
+    
+    // MARK: -
+    
+    func testFirstLowercased_withEmptyString_shouldReturnEmptyString() {
+        // Given
+        
+        // When
+        let result = emptyString.firstLowercased()
+        
+        // Expect
+        XCTAssertEqual(result, "")
+    }
+    
+    func testFirstLowercased_withNonEmptyString_shouldReturnFirstCharLowercased() {
+        // Given
+        let sut = "Uppercase Words In String"
+        
+        // When
+        let result = sut.firstLowercased()
+        
+        // Expect
+        XCTAssertEqual(result, "uppercase Words In String")
     }
 }

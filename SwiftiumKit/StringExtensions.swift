@@ -251,3 +251,13 @@ extension String {
         return substring(with: lowerIndex..<upperIndex)
     }
 }
+
+extension String {
+    public func firstLowercased() -> String {
+        var firstLowercased = self
+        if let firstCharLowercased = self[0]?.lowercased() {
+            firstLowercased[0] = firstCharLowercased
+        }
+        return firstLowercased
+    }
+}
