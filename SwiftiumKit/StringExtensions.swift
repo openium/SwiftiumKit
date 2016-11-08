@@ -160,4 +160,94 @@ extension String {
         return data.base16EncodedString()
     }
     
+    /**
+     Int subscript to String
+     
+     Usage example :
+     ````
+     var somestring = "some string"
+     
+     let substring = somestring[3]
+     let substringNegativeIndex = somestring[-1]
+     ````
+     
+     - Parameter i: index of the string
+     - Returns: a String containing the character at position i or nil if index is out of string bounds
+     */
+    public subscript(i: Int) -> String? {
+        get {
+            guard i >= -characters.count && i < characters.count else { return nil }
+            
+            let charIndex: Index
+            
+            if i >= 0 {
+                charIndex = index(startIndex, offsetBy: i)
+            } else {
+                charIndex = index(startIndex, offsetBy: characters.count + i)
+            }
+            
+            return String(self[charIndex])
+        }
+        
+        set(newValue) {
+            guard i >= 0 && i < characters.count else {
+                preconditionFailure("String subscript can only be used if the condition (index >= 0 && index < characters.count) is fulfilled")
+            }
+            guard newValue != nil else {
+                preconditionFailure("String replacement should not be nil")
+            }
+
+            let lowerIndex = index(startIndex, offsetBy: i, limitedBy: endIndex)!
+            let upperIndex = index(startIndex, offsetBy: i + 1, limitedBy: endIndex)!
+            let range = Range<String.Index>(uncheckedBounds: (lower: lowerIndex, upper: upperIndex))
+            
+            if !range.isEmpty {
+                self = self.replacingCharacters(in: range, with: newValue!)
+            }
+        }
+    }
+    
+    /**
+     Int closed range subscript to String
+     
+     Usage example :
+     ````
+     let somestring = "some string"
+     let substring = somestring[0..3]
+     ````
+     - Parameter range: a closed range of the string
+     - Returns: a substring containing the characters in the specified closed range
+     */
+    public subscript(range: ClosedRange<Int>) -> String {
+        let maxLowerBound = max(0, range.lowerBound)
+        let maxSupportedLowerOffset = maxLowerBound
+        let maxSupportedUpperOffset = range.upperBound - maxLowerBound + 1
+        
+        let lowerIndex = index(startIndex, offsetBy: maxSupportedLowerOffset, limitedBy: endIndex) ?? endIndex
+        let upperIndex = index(lowerIndex, offsetBy: maxSupportedUpperOffset, limitedBy: endIndex) ?? endIndex
+        
+        return substring(with: lowerIndex..<upperIndex)
+    }
+    
+    /**
+     Int range subscript to String
+     
+     Usage example :
+     ````
+     let somestring = "some string"
+     let substring = somestring[0..<3]
+     ````
+     - Parameter range: a range of the string
+     - Returns: a substring containing the characters in the specified range
+     */
+    public subscript(range: Range<Int>) -> String {
+        let maxLowerBound = max(0, range.lowerBound)
+        let maxSupportedLowerOffset = maxLowerBound
+        let maxSupportedUpperOffset = range.upperBound - maxLowerBound
+        
+        let lowerIndex = index(startIndex, offsetBy: maxSupportedLowerOffset, limitedBy: endIndex) ?? endIndex
+        let upperIndex = index(lowerIndex, offsetBy: maxSupportedUpperOffset, limitedBy: endIndex) ?? endIndex
+        
+        return substring(with: lowerIndex..<upperIndex)
+    }
 }

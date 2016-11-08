@@ -102,4 +102,241 @@ class StringExtensionsTests: XCTestCase {
         // Expect
         XCTAssertEqual(shaStr, "18835978a0297b5efca1e44d954f4f0c00b2b903")
     }
+    
+    func testIntSubscript() {
+        // Given
+        let someString = "5f4dcc3b5aa765d61d8327deb882cf99";
+        
+        // When
+        let thirdChar = someString[3]
+        let lastChar = someString[someString.characters.count - 1]
+        
+        // Expect
+        XCTAssertEqual(thirdChar, "d")
+        XCTAssertEqual(lastChar, "9")
+    }
+    
+    func testIntSubscript_setCharacter_shouldReplace() {
+        // Given
+        var someString = "5f4dcc3b5aa765d61d8327deb882cf99";
+        let expected = "Af4dcc3b5aa765d61d8327deb882cf9A";
+        
+        // When
+        someString[0] = "A"
+        someString[someString.characters.count - 1] = "A"
+        
+        // Expect
+        XCTAssertEqual(someString, expected)
+    }
+    
+    func testIntSubscript_setString_shouldReplaceAndExtendString() {
+        // Given
+        var someString = "5f4dcc3b5aa765d61d8327deb882cf99";
+        let expected = "ABCDEFf4dcc3b5aa765d61d8327deb882cf99";
+        
+        // When
+        someString[0] = "ABCDEF"
+        
+        // Expect
+        XCTAssertEqual(someString, expected)
+    }
+    
+    func testIntSubscript_setString_shouldReplaceAndShorterString() {
+        // Given
+        var someString = "5f4dcc3b5aa765d61d8327deb882cf99";
+        let expected = "f4dcc3b5aa765d61d8327deb882cf99";
+        
+        // When
+        someString[0] = ""
+        
+        // Expect
+        XCTAssertEqual(someString, expected)
+    }
+    
+    func testIntSubscript_usingNegativeIndex() {
+        // Given
+        let someString = "5f4dcc3b5aa765d61d8327deb882cf99";
+        
+        // When
+        let thirdLastChar = someString[-3]
+        let lastChart = someString[-1]
+        let firtChar = someString[-someString.characters.count]
+        
+        // Expect
+        XCTAssertEqual(thirdLastChar, "f")
+        XCTAssertEqual(lastChart, "9")
+        XCTAssertEqual(firtChar, "5")
+    }
+    
+    func testIntSubscript_outOfRange_shouldReturnNil() {
+        // Given
+        let someString = "5f4dcc3b5aa765d61d8327deb882cf99";
+        
+        // When
+        let outOfRangeChar = someString[someString.characters.count]
+        
+        // Expect
+        XCTAssertEqual(outOfRangeChar, nil)
+    }
+    
+    func testIntSubscript_usingNegativeIndexOutOfRange_shouldReturnNil() {
+        // Given
+        let someString = "5f4dcc3b5aa765d61d8327deb882cf99";
+        
+        // When
+        let outOfRangeChar = someString[-Int.max]
+        
+        // Expect
+        XCTAssertEqual(outOfRangeChar, nil)
+    }
+    
+    func testClosedRangeIntSubscript() {
+        // Given
+        let someString = "5f4dcc3b5aa765d61d8327deb882cf99";
+        
+        // When
+        let first4Chars = someString[0...3]
+        
+        // Expect
+        XCTAssertEqual(first4Chars, "5f4d")
+    }
+    
+    func testClosedRangeIntSubscript_usingUpperOutOfRangeIndex_shouldReturnEmptyString() {
+        // Given
+        let someString = "5f4dcc3b5aa765d61d8327deb882cf99";
+        
+        // When
+        let emptyString = someString[Int.max...Int.max]
+        
+        // Expect
+        XCTAssertEqual(emptyString, "")
+    }
+    
+    func testClosedRangeIntSubscript_usingSameLowerUpperIndex_shouldReturnEmptyString() {
+        // Given
+        let someString = "5f4dcc3b5aa765d61d8327deb882cf99";
+        
+        // When
+        let thirdChar = someString[3...3]
+        
+        // Expect
+        XCTAssertEqual(thirdChar, "d")
+    }
+    
+    func testClosedRangeIntSubscript_outOfRangeUpperAndLower_shouldReturnFullString() {
+        // Given
+        let someString = "5f4dcc3b5aa765d61d8327deb882cf99";
+        
+        // When
+        let fullString = someString[-1...someString.characters.count]
+        
+        // Expect
+        XCTAssertEqual(fullString, someString)
+    }
+    
+    func testClosedRangeIntSubscript_outOfRange_shouldBounds() {
+        // Given
+        let someString = "5f4dcc3b5aa765d61d8327deb882cf99";
+        
+        // When
+        let index = someString.characters.count - 4
+        let last4Chars = someString[index...Int.max]
+        
+        // Expect
+        XCTAssertEqual(last4Chars, "cf99")
+    }
+    
+    func testRangeIntSubscript() {
+        // Given
+        let someString = "5f4dcc3b5aa765d61d8327deb882cf99";
+        
+        // When
+        let first3Chars = someString[0..<3]
+        
+        // Expect
+        XCTAssertEqual(first3Chars, "5f4")
+    }
+    
+    func testRangeIntSubscript_outOfRange_shouldBounds() {
+        // Given
+        let someString = "5f4dcc3b5aa765d61d8327deb882cf99";
+        
+        // When
+        let index = someString.characters.count - 4
+        let last4Chars = someString[index..<Int.max]
+        
+        // Expect
+        XCTAssertEqual(last4Chars, "cf99")
+    }
+    
+    func testRangeIntSubscript_usingUpperOutOfRangeIndex_shouldReturnEmptyString() {
+        // Given
+        let someString = "5f4dcc3b5aa765d61d8327deb882cf99";
+        
+        // When
+        let emptyString = someString[Int.max..<Int.max]
+        
+        // Expect
+        XCTAssertEqual(emptyString, "")
+    }
+    
+    func testRangeIntSubscript_usingSameLowerUpperIndex_shouldReturnEmptyString() {
+        // Given
+        let someString = "5f4dcc3b5aa765d61d8327deb882cf99";
+        
+        // When
+        let emptyString = someString[4..<4]
+        
+        // Expect
+        XCTAssertEqual(emptyString, "")
+    }
+    
+    func testRangeIntSubscript_outOfRangeUpperAndLower_shouldReturnFullString() {
+        // Given
+        let someString = "5f4dcc3b5aa765d61d8327deb882cf99";
+        
+        // When
+        let fullString = someString[-1..<someString.characters.count]
+        
+        // Expect
+        XCTAssertEqual(fullString, someString)
+    }
+    
+    // MARK: - Disabled tests
+    
+    func disabled_testIntSubscript_negativeIndex_shouldRaisePreconditionFailure() {
+        // Given
+        var someString = "5f4dcc3b5aa765d61d8327deb882cf99";
+        let expected = "f4dcc3b5aa765d61d8327deb882cf99";
+        
+        // When
+        someString[-1] = ""
+        
+        // Expect
+        XCTAssertEqual(someString, expected)
+    }
+    
+    func disabled_testIntSubscript_outOfRangeIndex_shouldRaisePreconditionFailure() {
+        // Given
+        var someString = "5f4dcc3b5aa765d61d8327deb882cf99";
+        let expected = "f4dcc3b5aa765d61d8327deb882cf99";
+        
+        // When
+        someString[someString.characters.count] = ""
+        
+        // Expect
+        XCTAssertEqual(someString, expected)
+    }
+    
+    func disabled_testIntSubscript_nilNewValue_shouldRaisePreconditionFailure() {
+        // Given
+        var someString = "5f4dcc3b5aa765d61d8327deb882cf99";
+        let expected = "f4dcc3b5aa765d61d8327deb882cf99";
+        
+        // When
+        someString[0] = nil
+        
+        // Expect
+        XCTAssertEqual(someString, expected)
+    }
 }
