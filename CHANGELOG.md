@@ -5,6 +5,14 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased](https://github.com/openium/SwiftiumKit/compare/latest...HEAD)
 ### Added
+
+### Changed
+
+### Removed
+
+
+## [1.3.0] (https://github.com/openium/SwiftiumKit/compare/v1.3.0...v1.4.0)- 2016-11-08
+### Added
 - Add int subscript to String extension.
 - Add closed int range subscript to String extension.
 - Add int range subscript to String extension.
