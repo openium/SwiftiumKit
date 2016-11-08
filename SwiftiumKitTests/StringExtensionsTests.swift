@@ -164,6 +164,39 @@ class StringExtensionsTests: XCTestCase {
         XCTAssertEqual(first4Chars, "5f4d")
     }
     
+    func testClosedRangeIntSubscript_usingUpperOutOfRangeIndex_shouldReturnEmptyString() {
+        // Given
+        let someString = "5f4dcc3b5aa765d61d8327deb882cf99";
+        
+        // When
+        let emptyString = someString[Int.max...Int.max]
+        
+        // Expect
+        XCTAssertEqual(emptyString, "")
+    }
+    
+    func testClosedRangeIntSubscript_usingSameLowerUpperIndex_shouldReturnEmptyString() {
+        // Given
+        let someString = "5f4dcc3b5aa765d61d8327deb882cf99";
+        
+        // When
+        let thirdChar = someString[3...3]
+        
+        // Expect
+        XCTAssertEqual(thirdChar, "d")
+    }
+    
+    func testClosedRangeIntSubscript_outOfRangeUpperAndLower_shouldReturnFullString() {
+        // Given
+        let someString = "5f4dcc3b5aa765d61d8327deb882cf99";
+        
+        // When
+        let fullString = someString[-1...someString.characters.count]
+        
+        // Expect
+        XCTAssertEqual(fullString, someString)
+    }
+    
     func testClosedRangeIntSubscript_outOfRange_shouldBounds() {
         // Given
         let someString = "5f4dcc3b5aa765d61d8327deb882cf99";
@@ -197,5 +230,38 @@ class StringExtensionsTests: XCTestCase {
         
         // Expect
         XCTAssertEqual(last4Chars, "cf99")
+    }
+    
+    func testRangeIntSubscript_usingUpperOutOfRangeIndex_shouldReturnEmptyString() {
+        // Given
+        let someString = "5f4dcc3b5aa765d61d8327deb882cf99";
+        
+        // When
+        let emptyString = someString[Int.max..<Int.max]
+        
+        // Expect
+        XCTAssertEqual(emptyString, "")
+    }
+    
+    func testRangeIntSubscript_usingSameLowerUpperIndex_shouldReturnEmptyString() {
+        // Given
+        let someString = "5f4dcc3b5aa765d61d8327deb882cf99";
+        
+        // When
+        let emptyString = someString[4..<4]
+        
+        // Expect
+        XCTAssertEqual(emptyString, "")
+    }
+    
+    func testRangeIntSubscript_outOfRangeUpperAndLower_shouldReturnFullString() {
+        // Given
+        let someString = "5f4dcc3b5aa765d61d8327deb882cf99";
+        
+        // When
+        let fullString = someString[-1..<someString.characters.count]
+        
+        // Expect
+        XCTAssertEqual(fullString, someString)
     }
 }

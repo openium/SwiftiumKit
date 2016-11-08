@@ -199,8 +199,12 @@ extension String {
      - Returns: a substring containing the characters in the specified closed range
      */
     public subscript(range: ClosedRange<Int>) -> String {
-        let lowerIndex = index(startIndex, offsetBy: max(0, range.lowerBound), limitedBy: endIndex) ?? endIndex
-        let upperIndex = index(lowerIndex, offsetBy: range.upperBound - range.lowerBound + 1, limitedBy: endIndex) ?? endIndex
+        let maxLowerBound = max(0, range.lowerBound)
+        let maxSupportedLowerOffset = maxLowerBound
+        let maxSupportedUpperOffset = range.upperBound - maxLowerBound + 1
+        
+        let lowerIndex = index(startIndex, offsetBy: maxSupportedLowerOffset, limitedBy: endIndex) ?? endIndex
+        let upperIndex = index(lowerIndex, offsetBy: maxSupportedUpperOffset, limitedBy: endIndex) ?? endIndex
         
         return substring(with: lowerIndex..<upperIndex)
     }
@@ -217,8 +221,12 @@ extension String {
      - Returns: a substring containing the characters in the specified range
      */
     public subscript(range: Range<Int>) -> String {
-        let lowerIndex = index(startIndex, offsetBy: max(0, range.lowerBound), limitedBy: endIndex) ?? endIndex
-        let upperIndex = index(lowerIndex, offsetBy: range.upperBound - range.lowerBound, limitedBy: endIndex) ?? endIndex
+        let maxLowerBound = max(0, range.lowerBound)
+        let maxSupportedLowerOffset = maxLowerBound
+        let maxSupportedUpperOffset = range.upperBound - maxLowerBound
+        
+        let lowerIndex = index(startIndex, offsetBy: maxSupportedLowerOffset, limitedBy: endIndex) ?? endIndex
+        let upperIndex = index(lowerIndex, offsetBy: maxSupportedUpperOffset, limitedBy: endIndex) ?? endIndex
         
         return substring(with: lowerIndex..<upperIndex)
     }

@@ -33,13 +33,13 @@ class UIFontExtensionsTests: XCTestCase {
     func testFindFontHavingNameLike_shouldReturnSomeNames() {
         // Given
         let fontName = "Helvetica Bold"
-        let someNames = ["Helvetica-Bold"]
+        let expectedFoundName = "Helvetica-Bold"
         
         // When
         let findedFonts = UIFont.findFont(havingNameLike: fontName)
         
         // Expect
-        XCTAssertEqual(findedFonts, someNames)
+        XCTAssertTrue(findedFonts.contains(expectedFoundName))
     }
     
 }
