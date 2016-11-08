@@ -9,6 +9,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Add closed int range subscript to String extension.
 - Add int range subscript to String extension.
 - Add negative int subscript to String extension.
+- Add int subscript setter to String extension.
 
 ### Changed
 

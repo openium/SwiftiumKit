@@ -116,6 +116,43 @@ class StringExtensionsTests: XCTestCase {
         XCTAssertEqual(lastChar, "9")
     }
     
+    func testIntSubscript_setCharacter_shouldReplace() {
+        // Given
+        var someString = "5f4dcc3b5aa765d61d8327deb882cf99";
+        let expected = "Af4dcc3b5aa765d61d8327deb882cf9A";
+        
+        // When
+        someString[0] = "A"
+        someString[someString.characters.count - 1] = "A"
+        
+        // Expect
+        XCTAssertEqual(someString, expected)
+    }
+    
+    func testIntSubscript_setString_shouldReplaceAndExtendString() {
+        // Given
+        var someString = "5f4dcc3b5aa765d61d8327deb882cf99";
+        let expected = "ABCDEFf4dcc3b5aa765d61d8327deb882cf99";
+        
+        // When
+        someString[0] = "ABCDEF"
+        
+        // Expect
+        XCTAssertEqual(someString, expected)
+    }
+    
+    func testIntSubscript_setString_shouldReplaceAndShorterString() {
+        // Given
+        var someString = "5f4dcc3b5aa765d61d8327deb882cf99";
+        let expected = "f4dcc3b5aa765d61d8327deb882cf99";
+        
+        // When
+        someString[0] = ""
+        
+        // Expect
+        XCTAssertEqual(someString, expected)
+    }
+    
     func testIntSubscript_usingNegativeIndex() {
         // Given
         let someString = "5f4dcc3b5aa765d61d8327deb882cf99";
@@ -263,5 +300,43 @@ class StringExtensionsTests: XCTestCase {
         
         // Expect
         XCTAssertEqual(fullString, someString)
+    }
+    
+    // MARK: - Disabled tests
+    
+    func disabled_testIntSubscript_negativeIndex_shouldRaisePreconditionFailure() {
+        // Given
+        var someString = "5f4dcc3b5aa765d61d8327deb882cf99";
+        let expected = "f4dcc3b5aa765d61d8327deb882cf99";
+        
+        // When
+        someString[-1] = ""
+        
+        // Expect
+        XCTAssertEqual(someString, expected)
+    }
+    
+    func disabled_testIntSubscript_outOfRangeIndex_shouldRaisePreconditionFailure() {
+        // Given
+        var someString = "5f4dcc3b5aa765d61d8327deb882cf99";
+        let expected = "f4dcc3b5aa765d61d8327deb882cf99";
+        
+        // When
+        someString[someString.characters.count] = ""
+        
+        // Expect
+        XCTAssertEqual(someString, expected)
+    }
+    
+    func disabled_testIntSubscript_nilNewValue_shouldRaisePreconditionFailure() {
+        // Given
+        var someString = "5f4dcc3b5aa765d61d8327deb882cf99";
+        let expected = "f4dcc3b5aa765d61d8327deb882cf99";
+        
+        // When
+        someString[0] = nil
+        
+        // Expect
+        XCTAssertEqual(someString, expected)
     }
 }

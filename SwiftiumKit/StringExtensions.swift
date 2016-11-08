@@ -165,7 +165,8 @@ extension String {
      
      Usage example :
      ````
-     let somestring = "some string"
+     var somestring = "some string"
+     
      let substring = somestring[3]
      let substringNegativeIndex = somestring[-1]
      ````
@@ -174,17 +175,36 @@ extension String {
      - Returns: a String containing the character at position i or nil if index is out of string bounds
      */
     public subscript(i: Int) -> String? {
-        guard i >= -characters.count && i < characters.count else { return nil }
-
-        let charIndex: Index
-        
-        if i >= 0 {
-            charIndex = index(startIndex, offsetBy: i)
-        } else {
-            charIndex = index(startIndex, offsetBy: characters.count + i)
+        get {
+            guard i >= -characters.count && i < characters.count else { return nil }
+            
+            let charIndex: Index
+            
+            if i >= 0 {
+                charIndex = index(startIndex, offsetBy: i)
+            } else {
+                charIndex = index(startIndex, offsetBy: characters.count + i)
+            }
+            
+            return String(self[charIndex])
         }
         
-        return String(self[charIndex])
+        set(newValue) {
+            guard i >= 0 && i < characters.count else {
+                preconditionFailure("String subscript can only be used if the condition (index >= 0 && index < characters.count) is fulfilled")
+            }
+            guard newValue != nil else {
+                preconditionFailure("String replacement should not be nil")
+            }
+
+            let lowerIndex = index(startIndex, offsetBy: i, limitedBy: endIndex)!
+            let upperIndex = index(startIndex, offsetBy: i + 1, limitedBy: endIndex)!
+            let range = Range<String.Index>(uncheckedBounds: (lower: lowerIndex, upper: upperIndex))
+            
+            if !range.isEmpty {
+                self = self.replacingCharacters(in: range, with: newValue!)
+            }
+        }
     }
     
     /**
