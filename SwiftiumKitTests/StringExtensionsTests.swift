@@ -116,12 +116,38 @@ class StringExtensionsTests: XCTestCase {
         XCTAssertEqual(lastChar, "9")
     }
     
+    func testIntSubscript_usingNegativeIndex() {
+        // Given
+        let someString = "5f4dcc3b5aa765d61d8327deb882cf99";
+        
+        // When
+        let thirdLastChar = someString[-3]
+        let lastChart = someString[-1]
+        let firtChar = someString[-someString.characters.count]
+        
+        // Expect
+        XCTAssertEqual(thirdLastChar, "f")
+        XCTAssertEqual(lastChart, "9")
+        XCTAssertEqual(firtChar, "5")
+    }
+    
     func testIntSubscript_outOfRange_shouldReturnNil() {
         // Given
         let someString = "5f4dcc3b5aa765d61d8327deb882cf99";
         
         // When
         let outOfRangeChar = someString[someString.characters.count]
+        
+        // Expect
+        XCTAssertEqual(outOfRangeChar, nil)
+    }
+    
+    func testIntSubscript_usingNegativeIndexOutOfRange_shouldReturnNil() {
+        // Given
+        let someString = "5f4dcc3b5aa765d61d8327deb882cf99";
+        
+        // When
+        let outOfRangeChar = someString[-Int.max]
         
         // Expect
         XCTAssertEqual(outOfRangeChar, nil)
@@ -167,7 +193,7 @@ class StringExtensionsTests: XCTestCase {
         
         // When
         let index = someString.characters.count - 4
-        let last4Chars = someString[index...Int.max]
+        let last4Chars = someString[index..<Int.max]
         
         // Expect
         XCTAssertEqual(last4Chars, "cf99")

@@ -166,16 +166,25 @@ extension String {
      Usage example :
      ````
      let somestring = "some string"
-     let substring = somestring[0..3]
+     let substring = somestring[3]
+     let substringNegativeIndex = somestring[-1]
      ````
      
      - Parameter i: index of the string
      - Returns: a String containing the character at position i or nil if index is out of string bounds
      */
     public subscript(i: Int) -> String? {
-        guard i >= 0 && i < characters.count else { return nil }
+        guard i >= -characters.count && i < characters.count else { return nil }
+
+        let charIndex: Index
         
-        return String(self[index(startIndex, offsetBy: i)])
+        if i >= 0 {
+            charIndex = index(startIndex, offsetBy: i)
+        } else {
+            charIndex = index(startIndex, offsetBy: characters.count + i)
+        }
+        
+        return String(self[charIndex])
     }
     
     /**
