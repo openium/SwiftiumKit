@@ -364,4 +364,160 @@ class StringExtensionsTests: XCTestCase {
         // Expect
         XCTAssertEqual(result, "uppercase Words In String")
     }
+    
+    // MARK: -
+    
+    func testIsEmail_lowercase_valid() {
+        // Given
+        let email = "fistname.lastname@domain.tld"
+        
+        // When
+        let isEmail = email.isEmail
+        
+        // Expect
+        XCTAssertTrue(isEmail)
+    }
+    
+    func testIsEmail_randomcase_valid() {
+        // Given
+        let email = "fIsTnAmE.lAsTnAmE@dOmAiN.tLd"
+        
+        // When
+        let isEmail = email.isEmail
+        
+        // Expect
+        XCTAssertTrue(isEmail)
+    }
+    
+    func testIsEmail_no_tld_invalid() {
+        // Given
+        let email = "fistname.lastname@domain"
+        
+        // When
+        let isEmail = email.isEmail
+        
+        // Expect
+        XCTAssertFalse(isEmail)
+    }
+    
+    func testIsEmail_no_tld_ending_dot_invalid() {
+        // Given
+        let email = "fistname.lastname@domain."
+        
+        // When
+        let isEmail = email.isEmail
+        
+        // Expect
+        XCTAssertFalse(isEmail)
+    }
+    
+    func testIsEmail_no_at_invalid() {
+        // Given
+        let email = "fistname.lastnamedomain.tld"
+        
+        // When
+        let isEmail = email.isEmail
+        
+        // Expect
+        XCTAssertFalse(isEmail)
+    }
+    
+    func testIsEmail_no_name_invalid() {
+        // Given
+        let email = "@domain.tld"
+        
+        // When
+        let isEmail = email.isEmail
+        
+        // Expect
+        XCTAssertFalse(isEmail)
+    }
+    
+    func testIsEmail_whitespace_name_invalid() {
+        // Given
+        let email = "fistname lastname@domain.tld"
+        
+        // When
+        let isEmail = email.isEmail
+        
+        // Expect
+        XCTAssertFalse(isEmail)
+    }
+    
+    func testIsEmail_whitespace_domain_invalid() {
+        // Given
+        let email = "fistname.lastname@dom ain.tld"
+        
+        // When
+        let isEmail = email.isEmail
+        
+        // Expect
+        XCTAssertFalse(isEmail)
+    }
+    
+    func testIsEmail_whitespace_tld_invalid() {
+        // Given
+        let email = "fistname.lastname@domain.t ld"
+        
+        // When
+        let isEmail = email.isEmail
+        
+        // Expect
+        XCTAssertFalse(isEmail)
+    }
+    
+    func testIsEmail_double_dot_name_invalid() {
+        // Given
+        let email = "fistname..lastname@domain.tld"
+        
+        // When
+        let isEmail = email.isEmail
+        
+        // Expect
+        XCTAssertFalse(isEmail)
+    }
+    
+    func testIsEmail_double_email_valid() {
+        // Given
+        let email = "fistname.lastname+fistname.lastname@domain.tld"
+        
+        // When
+        let isEmail = email.isEmail
+        
+        // Expect
+        XCTAssertTrue(isEmail)
+    }
+    
+    func testIsEmail_double_plus_email_valid() {
+        // Given
+        let email = "fistname.lastname+fistname.lastname+2@domain.tld"
+        
+        // When
+        let isEmail = email.isEmail
+        
+        // Expect
+        XCTAssertTrue(isEmail)
+    }
+    
+    func testIsEmail_leading_whitespace_email_invalid() {
+        // Given
+        let email = " fistname..lastname@domain.tld"
+        
+        // When
+        let isEmail = email.isEmail
+        
+        // Expect
+        XCTAssertFalse(isEmail)
+    }
+    
+    func testIsEmail_trailing_whitespace_email_invalid() {
+        // Given
+        let email = "fistname..lastname@domain.tld "
+        
+        // When
+        let isEmail = email.isEmail
+        
+        // Expect
+        XCTAssertFalse(isEmail)
+    }
 }

@@ -253,6 +253,11 @@ extension String {
 }
 
 extension String {
+    public var isEmail: Bool {
+        let emailRegex = "[_A-Za-z0-9-+]+(?:\\.[_A-Za-z0-9-+]+)*@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: self)
+    }
+    
     public func firstLowercased() -> String {
         var firstLowercased = self
         if let firstCharLowercased = self[0]?.lowercased() {
