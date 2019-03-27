@@ -11,6 +11,13 @@ String extension to validate an email address
 
 ### Removed
 
+## [1.5.0](https://github.com/openium/SwiftiumKit/compare/v1.4.0...v1.5.0)
+### Added
+- Swift 5 compatibility
+
+### Changed
+
+### Removed
 
 ## [1.4.0] (https://github.com/openium/SwiftiumKit/compare/v1.3.0...v1.4.0)- 2016-11-08
 ### Added
