@@ -111,7 +111,7 @@ class StringExtensionsTests: XCTestCase {
         
         // When
         let thirdChar = someString[3]
-        let lastChar = someString[someString.characters.count - 1]
+        let lastChar = someString[someString.count - 1]
         
         // Expect
         XCTAssertEqual(thirdChar, "d")
@@ -125,7 +125,7 @@ class StringExtensionsTests: XCTestCase {
         
         // When
         someString[0] = "A"
-        someString[someString.characters.count - 1] = "A"
+        someString[someString.count - 1] = "A"
         
         // Expect
         XCTAssertEqual(someString, expected)
@@ -162,7 +162,7 @@ class StringExtensionsTests: XCTestCase {
         // When
         let thirdLastChar = someString[-3]
         let lastChart = someString[-1]
-        let firtChar = someString[-someString.characters.count]
+        let firtChar = someString[-someString.count]
         
         // Expect
         XCTAssertEqual(thirdLastChar, "f")
@@ -175,7 +175,7 @@ class StringExtensionsTests: XCTestCase {
         let someString = "5f4dcc3b5aa765d61d8327deb882cf99";
         
         // When
-        let outOfRangeChar = someString[someString.characters.count]
+        let outOfRangeChar = someString[someString.count]
         
         // Expect
         XCTAssertEqual(outOfRangeChar, nil)
@@ -230,7 +230,7 @@ class StringExtensionsTests: XCTestCase {
         let someString = "5f4dcc3b5aa765d61d8327deb882cf99";
         
         // When
-        let fullString = someString[-1...someString.characters.count]
+        let fullString = someString[-1...someString.count]
         
         // Expect
         XCTAssertEqual(fullString, someString)
@@ -241,7 +241,7 @@ class StringExtensionsTests: XCTestCase {
         let someString = "5f4dcc3b5aa765d61d8327deb882cf99";
         
         // When
-        let index = someString.characters.count - 4
+        let index = someString.count - 4
         let last4Chars = someString[index...Int.max]
         
         // Expect
@@ -264,7 +264,7 @@ class StringExtensionsTests: XCTestCase {
         let someString = "5f4dcc3b5aa765d61d8327deb882cf99";
         
         // When
-        let index = someString.characters.count - 4
+        let index = someString.count - 4
         let last4Chars = someString[index..<Int.max]
         
         // Expect
@@ -298,7 +298,7 @@ class StringExtensionsTests: XCTestCase {
         let someString = "5f4dcc3b5aa765d61d8327deb882cf99";
         
         // When
-        let fullString = someString[-1..<someString.characters.count]
+        let fullString = someString[-1..<someString.count]
         
         // Expect
         XCTAssertEqual(fullString, someString)
@@ -324,7 +324,7 @@ class StringExtensionsTests: XCTestCase {
         let expected = "f4dcc3b5aa765d61d8327deb882cf99";
         
         // When
-        someString[someString.characters.count] = ""
+        someString[someString.count] = ""
         
         // Expect
         XCTAssertEqual(someString, expected)
