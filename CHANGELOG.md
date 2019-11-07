@@ -9,6 +9,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 
 ### Removed
+force push of tag latest
 
 ## [1.6.0](https://github.com/openium/SwiftiumKit/compare/v1.5.0...v1.6.0) - 2019-11-06
 ### Added
