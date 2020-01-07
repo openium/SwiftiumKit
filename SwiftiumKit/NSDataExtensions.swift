@@ -15,7 +15,13 @@ import CommonCrypto
 private typealias SKCryptOperationFunction = (Data, String) -> Data?
 
 func sk_crypto_operate(operation: CCOperation, keySize: Int, data: Data, keyData: Data) -> Data? {
-    let keyLength = keyData.count
+    let keyBytes = UnsafeMutablePointer<UInt8>.allocate(capacity: keySize)
+    keyBytes.initialize(to: 0)
+    keyData.withUnsafeBytes { (bytes) in
+        for index in 0..<min(keySize, keyData.count) {
+            keyBytes[index] = bytes[index]
+        }
+    }
 
     //See the doc: For block ciphers, the output size will always be less than or
     //equal to the input size plus the size of one block.
@@ -26,21 +32,19 @@ func sk_crypto_operate(operation: CCOperation, keySize: Int, data: Data, keyData
     var numBytesEncrypted = 0
 
     let cryptStatus = cryptData.withUnsafeMutableBytes { (cryptBytes) -> CCCryptorStatus in
-       data.withUnsafeBytes { (dataBytes) -> CCCryptorStatus in
-           keyData.withUnsafeBytes { (keyBytes) -> CCCryptorStatus in
-               CCCrypt(operation,
-                       CCAlgorithm(kCCAlgorithmAES),
-                       CCOptions(kCCOptionPKCS7Padding),
-                       keyBytes.baseAddress, keyLength,
-                       nil,
-                       dataBytes.baseAddress, data.count,
-                       cryptBytes.baseAddress, cryptLength,
-                       &numBytesEncrypted)
-           }
-       }
+        data.withUnsafeBytes { (dataBytes) -> CCCryptorStatus in
+            CCCrypt(operation,
+                    CCAlgorithm(kCCAlgorithmAES),
+                    CCOptions(kCCOptionPKCS7Padding),
+                    keyBytes, keySize,
+                    nil,
+                    dataBytes.baseAddress, data.count,
+                    cryptBytes.baseAddress, cryptLength,
+                    &numBytesEncrypted)
+        }
     }
 
-    if UInt32(cryptStatus) == UInt32(kCCSuccess) {
+    if cryptStatus == kCCSuccess {
         cryptData.count = numBytesEncrypted
         return cryptData
     }
