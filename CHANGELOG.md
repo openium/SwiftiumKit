@@ -3,10 +3,19 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased](https://github.com/openium/SwiftiumKit/compare/v1.6.0...HEAD)
+## [Unreleased](https://github.com/openium/SwiftiumKit/compare/v1.7.0...HEAD)
 ### Added
 
 ### Changed
+
+### Removed
+
+
+## [Unreleased](https://github.com/openium/SwiftiumKit/compare/v1.7.0...HEAD) - 2020-01-07
+### Added
+
+### Changed
+Remove objc code to prepare SPM support (2.0)
 
 ### Removed
 force push of tag latest
