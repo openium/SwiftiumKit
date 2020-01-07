@@ -1,5 +1,7 @@
 #!/bin/sh
 
-xcodebuild test -scheme SwiftiumKit -destination OS=latest,name="iPad Air" | xcpretty
+swift package generate-xcodeproj
+
+xcodebuild test -scheme SwiftiumKit-Package -destination OS=latest,name="iPad Air" | xcpretty
 
 exit $?
