@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [ $# -lt 1 ] ; then
-    echo "usage : $(basename $0) x.y";
+    echo "usage : $(basename $0) x.y.z";
     exit -1
 fi
 
