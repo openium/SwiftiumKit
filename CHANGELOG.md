@@ -11,7 +11,15 @@ replaceOccurences on String
 
 ### Removed
 
-## [2.0.0](https://github.com/openium/SwiftiumKit/compare/2.0.0...HEAD)
+## [2.1.0](https://github.com/openium/SwiftiumKit/compare/2.1.0...2.0.0)
+### Added
+replaceOccurences on String
+
+### Changed
+
+### Removed
+
+## [2.0.0](https://github.com/openium/SwiftiumKit/compare/2.0.0...1.7.0)
 ### Added
 SPM Support
 
@@ -20,7 +28,7 @@ SPM Support
 ### Removed
 Carthage support
 
-## [1.7.0](https://github.com/openium/SwiftiumKit/compare/v1.7.0...HEAD) - 2020-01-07
+## [1.7.0](https://github.com/openium/SwiftiumKit/compare/v1.7.0...1.6.0) - 2020-01-07
 ### Added
 
 ### Changed
