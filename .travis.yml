@@ -1,5 +1,5 @@
-language: objective-c
-osx_image: xcode11.3
+language: swift
+osx_image: xcode11.4.1
 rvm:
   - 2.3
 script: ./.test.sh # easy to run on your machine : ./.test.sh

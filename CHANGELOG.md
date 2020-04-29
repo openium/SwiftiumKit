@@ -3,23 +3,24 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased](https://github.com/openium/SwiftiumKit/compare/2.0...HEAD)
+## [Unreleased](https://github.com/openium/SwiftiumKit/compare/2.1.0...HEAD)
 ### Added
+replaceOccurences on String
 
 ### Changed
 
 ### Removed
 
-## [2.0](https://github.com/openium/SwiftiumKit/compare/v1.7.0...2.0)
+## [2.0.0](https://github.com/openium/SwiftiumKit/compare/2.0.0...HEAD)
 ### Added
-SPM support
+SPM Support
 
 ### Changed
 
 ### Removed
-Carthage archive framework in tag script
+Carthage support
 
-## [1.7.0](https://github.com/openium/SwiftiumKit/compare/v1.6.0...v1.7.0) - 2020-01-07
+## [1.7.0](https://github.com/openium/SwiftiumKit/compare/v1.7.0...HEAD) - 2020-01-07
 ### Added
 
 ### Changed

@@ -520,4 +520,46 @@ class StringExtensionsTests: XCTestCase {
         // Expect
         XCTAssertFalse(isEmail)
     }
+    
+    // MARK: -
+    
+    func testReplaceOccurrences_oneTime() {
+        // Given
+        var someString = "a lazy dog"
+        let expected = "a lazy cat"
+        
+        // When
+        let replacedCount = someString.replaceOccurrences(of: "dog", with: "cat")
+        
+        // Expect
+        XCTAssertEqual(replacedCount, 1)
+        XCTAssertEqual(someString, expected)
+    }
+
+    func testReplaceOccurrences_twoTimes() {
+        // Given
+        var someString = "blop blop"
+        let expected = "blip blip"
+        
+        // When
+        let replacedCount = someString.replaceOccurrences(of: "blop", with: "blip")
+        
+        // Expect
+        XCTAssertEqual(replacedCount, 2)
+        XCTAssertEqual(someString, expected)
+    }
+
+    func testReplaceOccurrences_ofMissingString_shouldReplaceNothing() {
+        // Given
+        var someString = "blop blop"
+        let expected = "blop blop"
+        
+        // When
+        let replacedCount = someString.replaceOccurrences(of: "dog", with: "cat")
+        
+        // Expect
+        XCTAssertEqual(replacedCount, 0)
+        XCTAssertEqual(someString, expected)
+    }
+    
 }

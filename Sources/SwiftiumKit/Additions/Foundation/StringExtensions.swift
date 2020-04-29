@@ -269,3 +269,20 @@ extension String {
         return firstLowercased
     }
 }
+
+extension String {
+    
+    @discardableResult
+    public mutating func replaceOccurrences<Target: StringProtocol, Replacement: StringProtocol>(of target: Target, with replacement: Replacement, options: String.CompareOptions = [], locale: Locale? = nil) -> Int {
+        var range: Range<Index>?
+        var replaced = 0
+        repeat {
+            range = self.range(of: target, options: options, range: range.map { self.index($0.lowerBound, offsetBy: replacement.count)..<self.endIndex }, locale: locale)
+            if let range = range {
+                self.replaceSubrange(range, with: replacement)
+                replaced += 1
+            }
+        } while range != nil
+        return replaced
+    }
+}
