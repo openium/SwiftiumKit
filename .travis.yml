@@ -1,7 +1,5 @@
 language: swift
 osx_image: xcode11.4.1
-rvm:
-  - 2.3
 script: ./.test.sh # easy to run on your machine : ./.test.sh
 before_install: sudo gem install slather xcpretty
 after_success: slather

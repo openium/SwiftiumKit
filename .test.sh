@@ -2,6 +2,9 @@
 
 swift package generate-xcodeproj
 
-xcodebuild test -scheme SwiftiumKit-Package -destination OS=latest,name="iPad Air" | xcpretty
+xcodebuild test -scheme SwiftiumKit-Package -destination OS=latest,name="iPad (7th generation)" | xcpretty
+XCODEBUILD_RC=$?
 
-exit $?
+rm -rf SwiftiumKit.xcodeproj
+
+exit $XCODEBUILD_RC
