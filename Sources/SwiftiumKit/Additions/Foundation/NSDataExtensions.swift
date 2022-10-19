@@ -17,7 +17,7 @@ private typealias SKCryptOperationFunction = (Data, String) -> Data?
 func sk_crypto_operate(operation: CCOperation, keySize: Int, data: Data, keyData: Data) -> Data? {
     let keyBytes = UnsafeMutablePointer<UInt8>.allocate(capacity: keySize)
     keyBytes.initialize(to: 0)
-    keyData.withUnsafeBytes { (bytes) in
+    keyData.withUnsafeBytes { (bytes: UnsafeRawBufferPointer) in
         for index in 0..<min(keySize, keyData.count) {
             keyBytes[index] = bytes[index]
         }

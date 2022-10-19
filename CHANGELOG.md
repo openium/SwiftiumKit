@@ -5,9 +5,16 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased](https://github.com/openium/SwiftiumKit/compare/2.1.0...HEAD)
 ### Added
-replaceOccurences on String
 
 ### Changed
+
+### Removed
+
+## [2.1.1](https://github.com/openium/SwiftiumKit/compare/2.1.0...2.1.0)
+### Added
+
+### Changed
+- Fix withUnsafeBytes using Xcode 14
 
 ### Removed
 
@@ -21,26 +28,26 @@ replaceOccurences on String
 
 ## [2.0.0](https://github.com/openium/SwiftiumKit/compare/2.0.0...1.7.0)
 ### Added
-SPM Support
+- SPM Support
 
 ### Changed
 
 ### Removed
-Carthage support
+- Carthage support
 
 ## [1.7.0](https://github.com/openium/SwiftiumKit/compare/v1.7.0...1.6.0) - 2020-01-07
 ### Added
 
 ### Changed
-Remove objc code to prepare SPM support (2.0)
+- Remove objc code to prepare SPM support (2.0)
 
 ### Removed
-force push of tag latest
+- Force push of tag latest
 
 ## [1.6.0](https://github.com/openium/SwiftiumKit/compare/v1.5.0...v1.6.0) - 2019-11-06
 ### Added
-String extension to validate an email address
-Setted BUILD_LIBRARY_FOR_DISTRIBUTION to YES to get module stability
+- String extension to validate an email address
+- Setted BUILD_LIBRARY_FOR_DISTRIBUTION to YES to get module stability
 
 ### Changed
 
@@ -74,10 +81,8 @@ Setted BUILD_LIBRARY_FOR_DISTRIBUTION to YES to get module stability
 - Add addition operators on Dictionaries.
 
 ### Changed
-nothing
 
 ### Removed
-nothing
 
 ## [1.2.0] (https://github.com/openium/SwiftiumKit/compare/v1.1.1...v1.2.0)- 2016-10-19
 ### Added
